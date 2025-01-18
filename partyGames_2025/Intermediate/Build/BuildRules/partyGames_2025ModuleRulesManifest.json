@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\partyGames2025\\partyGames_2025\\Source\\partyGames_2025\\partyGames_2025.Build.cs",
+		"D:\\partyGames2025\\partyGames_2025\\Source\\partyGames_2025.Target.cs",
+		"D:\\partyGames2025\\partyGames_2025\\Source\\partyGames_2025Editor.Target.cs"
+	],
+	"EngineVersion": "5.5.1"
+}

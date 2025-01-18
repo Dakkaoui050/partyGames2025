@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\partygames_2025\\permoduleinline.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\x64\\partygames_2025editor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\partygames_2025\\definitions.partygames_2025.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\core\\public\\hal\\permoduleinline.inl"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

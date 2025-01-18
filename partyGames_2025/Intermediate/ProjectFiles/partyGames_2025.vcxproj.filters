@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\partyGames_2025.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\partyGames_2025.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\partyGames_2025Editor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\partyGames_2025">
+      <UniqueIdentifier>{5985E0F4-10DF-3189-89D3-728C8B0EB85C}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\partyGames_2025\partyGames_2025.Build.cs">
+      <Filter>Source\partyGames_2025</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\partyGames_2025\partyGames_2025.cpp">
+      <Filter>Source\partyGames_2025</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\partyGames_2025.h">
+      <Filter>Source\partyGames_2025</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\partyGames_2025Character.cpp">
+      <Filter>Source\partyGames_2025</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\partyGames_2025Character.h">
+      <Filter>Source\partyGames_2025</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\partyGames_2025GameMode.cpp">
+      <Filter>Source\partyGames_2025</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\partyGames_2025GameMode.h">
+      <Filter>Source\partyGames_2025</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
