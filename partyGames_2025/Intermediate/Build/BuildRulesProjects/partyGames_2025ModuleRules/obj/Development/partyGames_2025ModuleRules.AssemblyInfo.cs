@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("partyGames_2025ModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2513459dfd1669fcc1faaf65edac36b8cd82e156")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2dbf95c6018f35e5436a569de225c3ece185dc61")]
 [assembly: System.Reflection.AssemblyProductAttribute("partyGames_2025ModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("partyGames_2025ModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
