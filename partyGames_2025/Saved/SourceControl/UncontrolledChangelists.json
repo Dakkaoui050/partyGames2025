@@ -5,7 +5,16 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
-				"D:/partyGames2025/partyGames_2025/Content/StarterContent/Architecture/Floor_400x400.uasset"
+				"D:/partyGames2025/partyGames_2025/Content/StarterContent/Architecture/Floor_400x400.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/Material_002.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/dubblesteen.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/Dice_bp.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/HF/YFYBQ72OYLHJQS0TSSXGBV.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/0/3R/VUFFYHASA0U7CJMQXB4MS4.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/LevelPrototyping/Materials/M_PrototypeGrid.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/LevelPrototyping/Materials/M_Solid.uasset",
+				"D:/partyGames2025/partyGames_2025/Content/Material_001.uasset"
 			]
 		}
 	]
