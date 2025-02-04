@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\unrealeditor\\inc\\partygames_2025\\uht\\partygames_2025gamemode.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\x64\\partygames_2025editor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\partygames_2025\\definitions.partygames_2025.h",
+            "d:\\partygames2025\\partygames_2025\\source\\partygames_2025\\partygames_2025gamemode.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\unrealeditor\\inc\\partygames_2025\\uht\\partygames_2025gamemode.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
