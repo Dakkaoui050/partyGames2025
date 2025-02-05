@@ -4,6 +4,8 @@
 #include "DiceActor.h"
 #include "Components/StaticMeshComponent.h"
 //#include "GameFramework/PlayerController.h"
+#include "BoardPawn.h"
+#include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
 #include "Components/ArrowComponent.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -90,6 +92,13 @@ void ADiceActor::CheckDiceResult()
 
 		int DiceNumber = GetTopFaceNumber();
 		UE_LOG(LogTemp, Warning, TEXT("Dice landed on: %d"), DiceNumber);
+
+		// Find the Pawn and move it
+		ABoardPawn* BoardPawn = Cast<ABoardPawn>(UGameplayStatics::GetActorOfClass(GetWorld(), ABoardPawn::StaticClass()));
+		if (BoardPawn)
+		{
+			BoardPawn->MoveToTarget(DiceNumber);
+		}
 	}
 }
 
