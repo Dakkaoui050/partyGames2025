@@ -35,7 +35,14 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MoveSpeed = 400.0f;
+	
+	// 🎥 Camera & Spring Arm
+	UPROPERTY(VisibleAnywhere, Category = "Camera")
+	class USpringArmComponent* SpringArm;
 
+	UPROPERTY(VisibleAnywhere, Category = "Camera")
+	class UCameraComponent* Camera;
+	
 	// Path tracking
 	TArray<AActor*> Targets;
 	int CurrentTargetIndex = 0;

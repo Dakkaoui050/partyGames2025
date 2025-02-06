@@ -2,6 +2,8 @@
 
 
 #include "BoardPawn.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -13,6 +15,18 @@ ABoardPawn::ABoardPawn()
 
 	PawnMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PawnMesh"));
 	RootComponent = PawnMesh;
+
+	// 🎥 Create the Spring Arm (keeps the camera behind the pawn)
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+	SpringArm->SetupAttachment(PawnMesh);
+	SpringArm->TargetArmLength = 300.0f; // Distance from pawn
+	SpringArm->bEnableCameraLag = true;
+	SpringArm->CameraLagSpeed = 3.0f;
+	SpringArm->SetRelativeRotation(FRotator(-20.0f, 0.0f, 0.0f)); // Look slightly down
+
+	// 🎥 Create the Camera Component
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->SetupAttachment(SpringArm);
 }
 
 // Called when the game starts or when spawned
