@@ -34,7 +34,7 @@ private:
 	UStaticMeshComponent* PawnMesh;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
-	float MoveSpeed = 400.0f;
+	float MoveSpeed = 300.0f;
 	
 	// 🎥 Camera & Spring Arm
 	UPROPERTY(VisibleAnywhere, Category = "Camera")

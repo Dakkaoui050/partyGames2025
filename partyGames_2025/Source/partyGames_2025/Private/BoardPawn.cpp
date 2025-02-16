@@ -55,23 +55,31 @@ void ABoardPawn::Tick(float DeltaTime)
 	{
 		FVector TargetLocation = Targets[CurrentTargetIndex]->GetActorLocation();
 		FVector CurrentLocation = GetActorLocation();
-		FVector NewLocation = FMath::VInterpTo(CurrentLocation, TargetLocation, DeltaTime, MoveSpeed);
 
+		// Adjust the speed for smoother movement
+		float InterpSpeed = MoveSpeed;  
+
+		// Move smoothly towards the target
+		FVector NewLocation = FMath::VInterpConstantTo(CurrentLocation, TargetLocation, DeltaTime, InterpSpeed);
 		SetActorLocation(NewLocation);
 
-		// Check if close to target
-		if (FVector::Dist(NewLocation, TargetLocation) < 10.0f)
+		// Check if the pawn has reached its current target
+		if (FVector::Dist(NewLocation, TargetLocation) < 5.0f) // Threshold for stopping at a step
 		{
-			CurrentTargetIndex++;
 			TargetStepCount--;
 
-			if (TargetStepCount <= 0)
+			if (TargetStepCount > 0)
 			{
-				bIsMoving = false; // Stop movement
+				CurrentTargetIndex++; // Move to the next step
+			}
+			else
+			{
+				bIsMoving = false; // Stop movement when steps are finished
 			}
 		}
 	}
 }
+
 
 // Called to bind functionality to input
 void ABoardPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -88,4 +96,5 @@ void ABoardPawn::MoveToTarget(int Steps)
 		bIsMoving = true;
 	}
 }
+
 
