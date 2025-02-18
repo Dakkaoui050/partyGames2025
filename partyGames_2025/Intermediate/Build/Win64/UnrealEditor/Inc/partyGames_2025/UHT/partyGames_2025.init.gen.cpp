@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodepartyGames_2025_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x442C9976,
-				0xDC45D7FD,
+				0x25629CF0,
+				0xE621B6C8,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_partyGames_2025.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_partyGames_2025.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_partyGames_2025(Z_Construct_UPackage__Script_partyGames_2025, TEXT("/Script/partyGames_2025"), Z_Registration_Info_UPackage__Script_partyGames_2025, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x442C9976, 0xDC45D7FD));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_partyGames_2025(Z_Construct_UPackage__Script_partyGames_2025, TEXT("/Script/partyGames_2025"), Z_Registration_Info_UPackage__Script_partyGames_2025, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x25629CF0, 0xE621B6C8));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

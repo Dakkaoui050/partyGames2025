@@ -12,7 +12,7 @@
 #include "Engine/World.h"
 #include "TimerManager.h"
 #include "GameFramework/Controller.h"
-
+#include "TurnManager.h"
 // Sets default values
 ADiceActor::ADiceActor()
 {
@@ -93,11 +93,19 @@ void ADiceActor::CheckDiceResult()
 		int DiceNumber = GetTopFaceNumber();
 		UE_LOG(LogTemp, Warning, TEXT("Dice landed on: %d"), DiceNumber);
 
-		// Find the Pawn and move it
-		ABoardPawn* BoardPawn = Cast<ABoardPawn>(UGameplayStatics::GetActorOfClass(GetWorld(), ABoardPawn::StaticClass()));
-		if (BoardPawn)
+		// Get the TurnManager instance
+		ATurnManager* TurnManager = Cast<ATurnManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ATurnManager::StaticClass()));
+		if (!TurnManager) return;
+
+		// Get current player
+		ABoardPawn* CurrentPlayer = Cast<ABoardPawn>(TurnManager->GetCurrentPlayer());
+		if (CurrentPlayer)
 		{
-			BoardPawn->MoveToTarget(DiceNumber);
+			CurrentPlayer->MoveToTarget(DiceNumber);
+
+			// Delay switching to the next turn after movement finishes
+			FTimerHandle TurnDelay;
+			GetWorld()->GetTimerManager().SetTimer(TurnDelay, TurnManager, &ATurnManager::NextTurn, 2.0f, false);
 		}
 	}
 }

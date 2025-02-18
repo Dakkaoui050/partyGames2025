@@ -66,6 +66,12 @@
     <ClCompile Include="..\..\Source\partyGames_2025\Private\DiceActor.cpp">
       <Filter>Source\partyGames_2025\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\Private\PartyGameGameMode.cpp">
+      <Filter>Source\partyGames_2025\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\Private\TurnManager.cpp">
+      <Filter>Source\partyGames_2025\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\partyGames_2025\Public">
       <UniqueIdentifier>{3547E163-9C95-314E-8B08-27C568631374}</UniqueIdentifier>
     </Filter>
@@ -73,6 +79,12 @@
       <Filter>Source\partyGames_2025\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\partyGames_2025\Public\DiceActor.h">
+      <Filter>Source\partyGames_2025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\Public\PartyGameGameMode.h">
+      <Filter>Source\partyGames_2025\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\partyGames_2025\Public\TurnManager.h">
       <Filter>Source\partyGames_2025\Public</Filter>
     </ClCompile>
   </ItemGroup>
