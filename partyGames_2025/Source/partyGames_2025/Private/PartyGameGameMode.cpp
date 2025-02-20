@@ -12,9 +12,16 @@ void APartyGameGameMode::BeginPlay()
 	TArray<AActor*> PlayerActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABoardPawn::StaticClass(), PlayerActors);
 
+	UE_LOG(LogTemp, Warning, TEXT("Game Mode found %d players"), PlayerActors.Num());
+
 	TurnManager = Cast<ATurnManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ATurnManager::StaticClass()));
-	if (TurnManager && PlayerActors.Num() > 0)
+	if (TurnManager)
 	{
 		TurnManager->InitializePlayers(PlayerActors);
 	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("TurnManager not found in the scene!"));
+	}
 }
+

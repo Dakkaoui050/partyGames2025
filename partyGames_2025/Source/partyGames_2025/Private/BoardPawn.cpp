@@ -92,9 +92,12 @@ void ABoardPawn::MoveToTarget(int Steps)
 {
 	if (!bIsMoving && Targets.Num() > 0)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("%s is moving %d steps."), *GetName(), Steps);
+        
 		TargetStepCount = Steps;
 		bIsMoving = true;
 	}
 }
+
 
 

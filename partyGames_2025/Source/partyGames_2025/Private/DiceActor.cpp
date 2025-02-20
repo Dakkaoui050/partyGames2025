@@ -91,24 +91,32 @@ void ADiceActor::CheckDiceResult()
 		GetWorld()->GetTimerManager().ClearTimer(DiceCheckTimer);
 
 		int DiceNumber = GetTopFaceNumber();
-		UE_LOG(LogTemp, Warning, TEXT("Dice landed on: %d"), DiceNumber);
+		UE_LOG(LogTemp, Warning, TEXT("Dice rolled: %d"), DiceNumber);
 
-		// Get the TurnManager instance
 		ATurnManager* TurnManager = Cast<ATurnManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ATurnManager::StaticClass()));
-		if (!TurnManager) return;
+		if (!TurnManager)
+		{
+			UE_LOG(LogTemp, Error, TEXT("TurnManager not found in the scene!"));
+			return;
+		}
 
-		// Get current player
 		ABoardPawn* CurrentPlayer = Cast<ABoardPawn>(TurnManager->GetCurrentPlayer());
 		if (CurrentPlayer)
 		{
+			UE_LOG(LogTemp, Warning, TEXT("Moving Player: %s"), *CurrentPlayer->GetName());
 			CurrentPlayer->MoveToTarget(DiceNumber);
 
-			// Delay switching to the next turn after movement finishes
+			// Ensure NextTurn is actually called
 			FTimerHandle TurnDelay;
 			GetWorld()->GetTimerManager().SetTimer(TurnDelay, TurnManager, &ATurnManager::NextTurn, 2.0f, false);
 		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("No valid current player found!"));
+		}
 	}
 }
+
 
 int ADiceActor::GetTopFaceNumber()
 {

@@ -1,0 +1,32 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\partygames2025\\partygames_2025\\source\\partygames_2025\\private\\partygamegamemode.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\x64\\partygames_2025editor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\partygames_2025\\definitions.partygames_2025.h",
+            "d:\\partygames2025\\partygames_2025\\source\\partygames_2025\\public\\partygamegamemode.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "d:\\partygames2025\\partygames_2025\\source\\partygames_2025\\public\\turnmanager.h",
+            "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\unrealeditor\\inc\\partygames_2025\\uht\\turnmanager.generated.h",
+            "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\unrealeditor\\inc\\partygames_2025\\uht\\partygamegamemode.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\kismet\\gameplaystatics.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\kismet\\kismetsystemlibrary.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\coreuobject\\public\\uobject\\propertyaccessutil.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\kismetsystemlibrary.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\sound\\dialoguetypes.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\dialoguetypes.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\kismet\\gameplaystaticstypes.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystaticstypes.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystatics.generated.h",
+            "d:\\partygames2025\\partygames_2025\\source\\partygames_2025\\public\\boardpawn.h",
+            "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\unrealeditor\\inc\\partygames_2025\\uht\\boardpawn.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

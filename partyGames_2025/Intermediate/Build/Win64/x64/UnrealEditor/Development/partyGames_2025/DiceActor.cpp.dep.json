@@ -23,7 +23,9 @@
             "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystatics.generated.h",
             "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\kismet\\kismetmathlibrary.h",
             "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\kismetmathlibrary.generated.h",
-            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\kismet\\kismetmathlibrary.inl"
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\kismet\\kismetmathlibrary.inl",
+            "d:\\partygames2025\\partygames_2025\\source\\partygames_2025\\public\\turnmanager.h",
+            "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\unrealeditor\\inc\\partygames_2025\\uht\\turnmanager.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

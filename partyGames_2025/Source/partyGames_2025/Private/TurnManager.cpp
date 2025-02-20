@@ -28,7 +28,15 @@ void ATurnManager::InitializePlayers(TArray<AActor*> Players)
 {
 	PlayerList = Players;
 	CurrentTurnIndex = 0;
+
+	UE_LOG(LogTemp, Warning, TEXT("TurnManager Initialized with %d players"), PlayerList.Num());
+
+	for (int i = 0; i < PlayerList.Num(); i++)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Player %d: %s"), i, *PlayerList[i]->GetName());
+	}
 }
+
 
 void ATurnManager::NextTurn()
 {
@@ -42,8 +50,11 @@ AActor* ATurnManager::GetCurrentPlayer()
 {
 	if (PlayerList.IsValidIndex(CurrentTurnIndex))
 	{
+		UE_LOG(LogTemp, Warning, TEXT("Current player: %s"), *PlayerList[CurrentTurnIndex]->GetName());
 		return PlayerList[CurrentTurnIndex];
 	}
+
+	UE_LOG(LogTemp, Error, TEXT("CurrentTurnIndex is invalid! Player list size: %d, CurrentTurnIndex: %d"), PlayerList.Num(), CurrentTurnIndex);
 	return nullptr;
 }
 
