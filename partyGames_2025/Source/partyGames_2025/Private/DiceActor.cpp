@@ -69,7 +69,7 @@ void ADiceActor::Tick(float DeltaTime)
 void ADiceActor::RollDice()
 {
 	if (!DiceMesh) return;
-
+	// Random rotation and impulse (Force )
 	FVector RandomImpulse = FVector(FMath::RandRange(-300, 300), FMath::RandRange(-300, 300), FMath::RandRange(500, 800));
 	FVector RandomTorque = FVector(FMath::RandRange(-50000, 50000), FMath::RandRange(-50000, 50000), FMath::RandRange(-50000, 50000));
 

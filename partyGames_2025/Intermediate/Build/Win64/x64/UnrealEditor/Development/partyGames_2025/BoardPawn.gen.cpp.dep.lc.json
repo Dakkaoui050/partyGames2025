@@ -7,6 +7,10 @@
         "Includes": [
             "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\partygames_2025\\definitions.partygames_2025.h",
             "d:\\partygames2025\\partygames_2025\\source\\partygames_2025\\public\\boardpawn.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\components\\boxcomponent.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\shapecomponent.generated.h",
+            "c:\\program files\\epic games\\ue_5.5\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\boxcomponent.generated.h",
             "d:\\partygames2025\\partygames_2025\\intermediate\\build\\win64\\unrealeditor\\inc\\partygames_2025\\uht\\boardpawn.generated.h"
         ],
         "ImportedModules": [],

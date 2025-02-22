@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/BoxComponent.h"
 #include "GameFramework/Pawn.h"
 #include "BoardPawn.generated.h"
 
@@ -28,24 +29,47 @@ public:
 
 	// Function to move the pawn
 	void MoveToTarget(int Steps);
+	
 
 private:
+	bool bIsAdjusting = false; // Prevents infinite loop
+
+	bool bHasAdjusted = false; 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* PawnMesh;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MoveSpeed = 300.0f;
-	
+
 	// 🎥 Camera & Spring Arm
 	UPROPERTY(VisibleAnywhere, Category = "Camera")
 	class USpringArmComponent* SpringArm;
 
 	UPROPERTY(VisibleAnywhere, Category = "Camera")
 	class UCameraComponent* Camera;
-	
+
 	// Path tracking
 	TArray<AActor*> Targets;
 	int CurrentTargetIndex = 0;
 	int TargetStepCount = 0;
 	bool bIsMoving = false;
+	bool bHasAdjustedPosition = false;
+	// 🟢 Trigger for detecting overlap
+	UPROPERTY(VisibleAnywhere, Category = "Collision")
+	UBoxComponent* OverlapTrigger;
+
+	// Function to adjust position if overlapping
+	void AdjustForOverlap();
+
+	// Function for handling overlap event
+	UFUNCTION()
+	void OnPawnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, 
+					   UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, 
+					   bool bFromSweep, const FHitResult& SweepResult);
+	// 🟢 Move pawns aside if needed
+	void AdjustBlockingPawn(ABoardPawn* BlockingPawn);
+	void CheckAndMoveBlockingPawns(int Steps);
+	void SafeMovePawn(ABoardPawn* BlockingPawn, FVector NewLocation);
 };
+
+

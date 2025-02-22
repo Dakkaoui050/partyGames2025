@@ -33,7 +33,7 @@ private:
     UStaticMeshComponent* DiceMesh;
 
 	// Timer handle for checking when dice stops
-
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Dice", meta = (AllowPrivateAccess = "true"))
 	UArrowComponent* Arrow1;
 
