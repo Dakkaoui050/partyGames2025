@@ -4,7 +4,7 @@
 #include "BoardPawn.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Components/BoxComponent.h"
+//#include "Components/BoxComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -30,13 +30,13 @@ ABoardPawn::ABoardPawn()
 	Camera->SetupAttachment(SpringArm);
 
 	// 🟢 Create the trigger box for detecting overlap
-	OverlapTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("OverlapTrigger"));
-	OverlapTrigger->SetupAttachment(RootComponent);
-	OverlapTrigger->SetBoxExtent(FVector(50.0f, 50.0f, 100.0f));
-	OverlapTrigger->SetCollisionProfileName(TEXT("Trigger"));
+	//OverlapTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("OverlapTrigger"));
+	//OverlapTrigger->SetupAttachment(RootComponent);
+	//OverlapTrigger->SetBoxExtent(FVector(50.0f, 50.0f, 100.0f));
+	//OverlapTrigger->SetCollisionProfileName(TEXT("Trigger"));
 
 	// Bind the overlap event
-	OverlapTrigger->OnComponentBeginOverlap.AddDynamic(this, &ABoardPawn::OnPawnOverlap);
+	//OverlapTrigger->OnComponentBeginOverlap.AddDynamic(this, &ABoardPawn::OnPawnOverlap);
 }
 
 // Called when the game starts or when spawned
@@ -61,6 +61,7 @@ void ABoardPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	
 	if (bIsMoving && Targets.IsValidIndex(CurrentTargetIndex))
 	{
 		FVector TargetLocation = Targets[CurrentTargetIndex]->GetActorLocation();
@@ -259,17 +260,154 @@ void ABoardPawn::SafeMovePawn(ABoardPawn* BlockingPawn, FVector NewLocation)
 {
 	if (!BlockingPawn) return;
 
-	// 🕒 Delay the move slightly to prevent immediate overlap triggering
-	FTimerHandle MoveTimer;
+	// ✅ Use the class member instead of creating a local variable
 	GetWorldTimerManager().SetTimer(MoveTimer, [BlockingPawn, NewLocation]()
 	{
 		if (BlockingPawn) 
 		{
 			BlockingPawn->SetActorLocation(NewLocation);
-			BlockingPawn->bIsAdjusting = false; // 🟢 Allow future adjustments
+			BlockingPawn->bIsAdjusting = false;
 		}
 	}, 0.1f, false);
 }
+
+
+void ABoardPawn::UpdateSmoothMovement()
+{
+	if (!bIsMovingAside) return;
+
+	// ✅ Log movement progress
+	UE_LOG(LogTemp, Warning, TEXT("[DEBUG] %s is moving towards X=%.2f, Y=%.2f, Z=%.2f"), 
+		   *GetName(), MoveTargetLocation.X, MoveTargetLocation.Y, MoveTargetLocation.Z);
+
+	// ✅ Ensure movement is safe
+	if (!IsValid(this))
+	{
+		UE_LOG(LogTemp, Error, TEXT("[ERROR] %s is invalid! Cannot move."), *GetName());
+		return;
+	}
+
+	// ✅ Gradual movement using interpolation
+	FVector NewLocation = FMath::VInterpTo(GetActorLocation(), MoveTargetLocation, GetWorld()->GetDeltaSeconds(), 3.0f);
+	SetActorLocation(NewLocation);
+
+	// ✅ Stop moving when close enough
+	if (FVector::Dist(GetActorLocation(), MoveTargetLocation) < 5.0f)
+	{
+		bIsMovingAside = false;
+		GetWorldTimerManager().ClearTimer(MoveTimer);
+		UE_LOG(LogTemp, Warning, TEXT("[DEBUG] %s has finished moving aside."), *GetName());
+	}
+}
+
+void ABoardPawn::MoveAsideForNextPlayer()
+{
+	UE_LOG(LogTemp, Warning, TEXT("[DEBUG] %s: MoveAsideForNextPlayer() triggered."), *GetName());
+
+	TArray<AActor*> NearbyPawns;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABoardPawn::StaticClass(), NearbyPawns);
+
+	FVector CenterLocation = GetActorLocation();
+	float OffsetAmount = 150.0f; // Distance to step aside
+
+	for (AActor* Actor : NearbyPawns)
+	{
+		ABoardPawn* OtherPawn = Cast<ABoardPawn>(Actor);
+		if (OtherPawn && OtherPawn != this && FVector::Dist(CenterLocation, OtherPawn->GetActorLocation()) < 50.0f)
+		{
+			if (!IsValid(OtherPawn))
+			{
+				UE_LOG(LogTemp, Error, TEXT("[ERROR] Invalid pawn detected. Skipping move."));
+				continue;
+			}
+
+			// ✅ Move in the correct direction
+			FVector FacingDirection = OtherPawn->GetActorForwardVector();
+			FacingDirection.Z = 0;
+
+			// ✅ Compute new location
+			FVector TargetLocation = CenterLocation + (FacingDirection * -OffsetAmount);
+
+			// ✅ Move and update status
+			OtherPawn->bIsMovingAside = true;
+			OtherPawn->MoveOverTime(TargetLocation, 0.6f);
+
+			UE_LOG(LogTemp, Warning, TEXT("[DEBUG] %s is smoothly moving aside to: X=%.2f, Y=%.2f before next player arrives"), 
+				   *OtherPawn->GetName(), TargetLocation.X, TargetLocation.Y);
+		}
+	}
+}
+
+
+void ABoardPawn::MoveSmoothly(FVector TargetLocation)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[DEBUG] %s: MoveSmoothly() called. Moving to: X=%.2f, Y=%.2f, Z=%.2f"), 
+		   *GetName(), TargetLocation.X, TargetLocation.Y, TargetLocation.Z);
+
+	// Ensure we don't start multiple movement timers
+	if (MoveTimer.IsValid())
+	{
+		GetWorldTimerManager().ClearTimer(MoveTimer);
+	}
+
+	MoveTargetLocation = TargetLocation;
+	bIsMovingAside = true;
+
+	// Gradually move toward the target location
+	GetWorldTimerManager().SetTimer(MoveTimer, this, &ABoardPawn::UpdateSmoothMovement, 0.01f, true);
+}
+
+
+void ABoardPawn::CheckAndMoveBlockingPawns()
+{
+	FVector TargetLocation = GetActorLocation();
+
+	// Find if any pawn is at that location
+	TArray<AActor*> FoundPawns;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABoardPawn::StaticClass(), FoundPawns);
+
+	for (AActor* Actor : FoundPawns)
+	{
+		ABoardPawn* OtherPawn = Cast<ABoardPawn>(Actor);
+		if (OtherPawn && OtherPawn != this)
+		{
+			// If another pawn is at the target location, move it aside
+			if (FVector::Dist(OtherPawn->GetActorLocation(), TargetLocation) < 150.0f)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("[DEBUG] Moving blocking pawn %s from location (%.2f, %.2f)"), 
+					   *OtherPawn->GetName(), TargetLocation.X, TargetLocation.Y);
+
+				OtherPawn->MoveAsideForNextPlayer();
+			}
+		}
+	}
+}
+void ABoardPawn::MoveOverTime(FVector TargetLocation, float Duration)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[DEBUG] %s: MoveOverTime() called. Moving to: X=%.2f, Y=%.2f in %.2f seconds"), 
+		   *GetName(), TargetLocation.X, TargetLocation.Y, Duration);
+
+	USceneComponent* RootComp = GetRootComponent();
+	if (!RootComp) return;
+
+	FLatentActionInfo LatentInfo;
+	LatentInfo.CallbackTarget = this;
+
+	// ✅ Move the pawn smoothly over `Duration` seconds
+	UKismetSystemLibrary::MoveComponentTo(RootComp, TargetLocation, FRotator::ZeroRotator, false, false, Duration, false, EMoveComponentAction::Move, LatentInfo);
+
+	// ✅ Wait until movement is finished, then mark as done
+	FTimerHandle FinishMoveTimer;
+	GetWorldTimerManager().SetTimer(FinishMoveTimer, this, &ABoardPawn::FinishMoveAside, Duration, false);
+}
+
+// 🟢 Called when the movement finishes
+void ABoardPawn::FinishMoveAside()
+{
+	bIsMovingAside = false;
+	UE_LOG(LogTemp, Warning, TEXT("[DEBUG] %s has finished moving aside."), *GetName());
+}
+
 
 
 

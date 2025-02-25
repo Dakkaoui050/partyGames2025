@@ -29,8 +29,15 @@ public:
 
 	// Function to move the pawn
 	void MoveToTarget(int Steps);
-	
-
+	void MoveAsideForNextPlayer();
+	void MoveSmoothly(FVector TargetLocation);
+	void CheckAndMoveBlockingPawns();
+	FVector MoveTargetLocation;  // Store target position
+	bool bIsMovingAside = false; // Track if movement is active
+	FTimerHandle MoveTimer; // Timer for smooth movement
+	void MoveOverTime(FVector TargetLocation, float Duration);                                
+	void UpdateSmoothMovement(); // Function to move character frame-by-frame
+	void FinishMoveAside();
 private:
 	bool bIsAdjusting = false; // Prevents infinite loop
 
@@ -70,6 +77,9 @@ private:
 	void AdjustBlockingPawn(ABoardPawn* BlockingPawn);
 	void CheckAndMoveBlockingPawns(int Steps);
 	void SafeMovePawn(ABoardPawn* BlockingPawn, FVector NewLocation);
+
+	
+	
 };
 
 

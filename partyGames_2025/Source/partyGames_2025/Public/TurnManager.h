@@ -26,6 +26,9 @@ public:
 	void InitializePlayers(TArray<AActor*> Players); 
 	void NextTurn();
 	AActor* GetCurrentPlayer();
+	void FinishTurnSwitch();
+	void CheckIfP1FinishedMoving();
+	FTimerHandle CheckMovementTimer; // ✅ Track the timer globally
 
 private:
 	TArray<AActor*> PlayerList;
